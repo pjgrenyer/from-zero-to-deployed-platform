@@ -26,7 +26,12 @@ resource "aws_s3_object" "from_zero_to_deployed" {
   source = "from_zero_to_deployed.zip"
 }
 ```
-# Create a role so the lambda can run
+# Create a Role so the Lambda can run
+
+Adding a role to a lambda allows it to gain permissions for other services, such as logging.
+
+- A Lambda does not require this role to be specificed
+- Terraform does require a role to be specifiec for a lambda
 
 ```
 resource "aws_iam_role" "lambda" {
@@ -84,7 +89,7 @@ resource "aws_lambda_function" "from_zero_to_deployed" {
   handler       = "index.handler"
   publish       = true
 
-  runtime = "nodejs16.x"
+  runtime = "nodejs20.x"
   layers  = []
 }
 ```

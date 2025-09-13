@@ -36,3 +36,5 @@ terraform.rc
 
 # Misc
 response.json
+*.zip
+main.tf

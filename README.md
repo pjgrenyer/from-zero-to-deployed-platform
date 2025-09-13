@@ -102,7 +102,7 @@ resource "aws_lambda_function" "from_zero_to_deployed" {
 }
 ```
 
-# Execute to Lamba with the Payload
+# Execute the Lamba with the Payload
 ```
 aws lambda invoke --function-name from-zero-to-deployed --payload file://payload.json --cli-binary-format raw-in-base64-out response.json && more response.json
 ```

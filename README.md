@@ -12,8 +12,8 @@ cd ..
 # Create S3 Bucket
 
 ```
-resource "aws_s3_bucket" "email_sender_lambda" {
-  bucket = "email-sender-lambda"
+resource "aws_s3_bucket" "from_zero_to_deployed" {
+  bucket = "from-zero-to-deployed"
 }
 ```
 

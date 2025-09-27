@@ -1,8 +1,6 @@
-
 resource "aws_s3_bucket" "from_zero_to_deployed" {
-  bucket = "from-zero-to-deployed"
+  bucket = "email-sender-lambda"
 }
-
 
 resource "aws_s3_object" "from_zero_to_deployed" {
   bucket = aws_s3_bucket.from_zero_to_deployed.id
@@ -56,9 +54,10 @@ resource "aws_lambda_function" "from_zero_to_deployed" {
   s3_key        = aws_s3_object.from_zero_to_deployed.key
   function_name = "from-zero-to-deployed"
   role          = aws_iam_role.lambda.arn
-  handler       = "index.handler"
+  handler       = "dist/index.handler"
   publish       = true
 
   runtime = "nodejs20.x"
   layers  = []
 }
+

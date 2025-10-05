@@ -12,6 +12,7 @@ zip -r from_zero_to_deployed.zip dist
 ```
 resource "aws_s3_bucket" "from_zero_to_deployed" {
   bucket = "from-zero-to-deployed"
+  force_destroy = true
 }
 ```
 

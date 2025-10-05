@@ -107,6 +107,17 @@ resource "aws_lambda_function" "from_zero_to_deployed" {
 aws lambda invoke --function-name from-zero-to-deployed --payload file://payload.json --cli-binary-format raw-in-base64-out response.json && more response.json
 ```
 
+# function url
+
+resource "aws_lambda_function_url" "from_zero_to_deployed" {
+  function_name      = aws_lambda_function.from_zero_to_deployed.function_name
+  authorization_type = "NONE" # Don't do this
+}
+
+output "lambda_function_url" {
+  value = aws_lambda_function_url.from_zero_to_deployed.function_url
+}
+
 
 
 

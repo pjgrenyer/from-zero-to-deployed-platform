@@ -88,7 +88,7 @@ resource "aws_lambda_function" "from_zero_to_deployed" {
   handler       = "dist/index.handler"
   publish       = true
 
-  runtime       = "nodejs20.x"
+  runtime       = "nodejs22.x"
   architectures = ["arm64"]
   layers        = []
 }

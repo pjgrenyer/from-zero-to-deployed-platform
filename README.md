@@ -114,6 +114,21 @@ resource "aws_lambda_function_url" "from_zero_to_deployed" {
   authorization_type = "NONE" # Don't do this
 }
 
+resource "aws_lambda_permission" "url_public_invoke_url" {
+  statement_id           = "AllowPublicInvokeFunctionUrl"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.from_zero_to_deployed.function_name
+  principal              = "*"
+  function_url_auth_type = "NONE" # Don't do this in production, use AWS_IAM and sign your requests
+}
+
+resource "aws_lambda_permission" "url_public_invoke" {
+  statement_id  = "AllowPublicInvokeFunction"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.from_zero_to_deployed.function_name
+  principal     = "*"
+}
+
 output "lambda_function_url" {
   value = aws_lambda_function_url.from_zero_to_deployed.function_url
 }
